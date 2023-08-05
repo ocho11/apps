@@ -23,7 +23,7 @@ game.onkey(fun=player_2_right.down, key="s")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
 
     if ball.ycor() > 280 or ball.ycor() < -280:
@@ -31,6 +31,7 @@ while game_is_on:
 
     if ball.distance(player_1_left) < 50 and ball.xcor() > 320 or ball.distance(
             player_2_right) < 50 and ball.xcor() < -320:
+        ball.move_speed *= 0.9
         ball.bounce_horizontal()
 
     if ball.xcor() < -400:
