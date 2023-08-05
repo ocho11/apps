@@ -1,6 +1,7 @@
 import turtle as game
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 screen = game.Screen()
@@ -12,6 +13,7 @@ screen.tracer(0)
 player_1_left = Paddle((350, 0))
 player_2_right = Paddle((-350, 0))
 ball = Ball()
+scoreboard = Scoreboard()
 
 game.listen()
 game.onkey(fun=player_1_left.up, key="Up")
@@ -33,9 +35,11 @@ while game_is_on:
 
     if ball.xcor() < -400:
         ball.reset_position()
+        scoreboard.increase_player_2_right_score()
 
     if ball.xcor() > 400:
         ball.reset_position()
+        scoreboard.increase_player_1_left_score()
 
     ball.move()
 
