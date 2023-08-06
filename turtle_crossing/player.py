@@ -14,4 +14,7 @@ class Player(Turtle):
         self.setheading(90)
 
     def move(self):
-        self.forward(MOVE_DISTANCE)
+        if self.ycor() < 280:
+            self.forward(MOVE_DISTANCE)
+        else:
+            self.goto(STARTING_POSITION)
