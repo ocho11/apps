@@ -17,12 +17,13 @@ screen.onkey(fun=player.move, key="Up")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
-    screen.update()
+    time.sleep(car_manager.cars_speed)
 
-    if player.ycor() >= 280:
+    if player.ycor() > 280:
         scoreboard.level_up()
+        car_manager.cars_speed *= 0.5
 
     car_manager.create_cars()
     car_manager.move()
 
+    screen.update()

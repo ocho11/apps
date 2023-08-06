@@ -9,6 +9,7 @@ MOVE_INCREMENT = 10
 class CarManager():
     def __init__(self):
         self.all_cars = []
+        self.cars_speed = 0.1
 
     def create_cars(self):
         random_chance = random.randint(1, 6)
@@ -20,6 +21,7 @@ class CarManager():
             random_y_cor = random.randint(-250, 250)
             new_car.goto(300, random_y_cor)
             self.all_cars.append(new_car)
+
     def move(self):
         for car in self.all_cars:
             car.backward(MOVE_INCREMENT)
