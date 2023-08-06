@@ -10,10 +10,11 @@ class CarManager():
     def __init__(self):
         self.all_cars = []
         self.cars_speed = 0.1
+        self.should_stop = False
 
     def create_cars(self):
         random_chance = random.randint(1, 6)
-        if random_chance == 5:
+        if random_chance == 5 and not self.should_stop:
             new_car = Turtle("square")
             new_car.penup()
             new_car.shapesize(stretch_wid=1, stretch_len=2)
@@ -23,5 +24,6 @@ class CarManager():
             self.all_cars.append(new_car)
 
     def move(self):
-        for car in self.all_cars:
-            car.backward(MOVE_INCREMENT)
+        if not self.should_stop:
+            for car in self.all_cars:
+                car.backward(MOVE_INCREMENT)

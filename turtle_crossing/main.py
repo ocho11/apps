@@ -24,7 +24,18 @@ while game_is_on:
         scoreboard.level_up()
         car_manager.cars_speed *= 0.8
 
+    if len(car_manager.all_cars) == 0:
+        car_manager.create_cars()
+
     car_manager.create_cars()
     car_manager.move()
+
+    for car in car_manager.all_cars:
+        x_distance_between_player_and_car = abs(abs(car.xcor()) - abs(player.xcor()))
+        y_distance_between_player_and_car = abs(abs(car.ycor()) - abs(player.ycor()))
+
+        if car.distance(player) < 36 and x_distance_between_player_and_car < 30 and y_distance_between_player_and_car < 20:
+            screen.onkey(fun=None, key="Up")
+            car_manager.should_stop = True
 
     screen.update()

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b14f1604-3627-40ef-8e53-59edaf2153ee" name="Changes" comment="" />
+    <list default="true" id="b14f1604-3627-40ef-8e53-59edaf2153ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../turtle_crossing/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../turtle_crossing/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../turtle_crossing/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/../turtle_crossing/player.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +16,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2TX2E9XzwzTDrldtWCXe8V3obHb" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,7 +28,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/ochbayarsaikhan/PycharmProjects/BootCamp/apps/pong_game"
   }
 }]]></component>
   <component name="RecentsManager">
