@@ -20,7 +20,7 @@ while game_is_on:
     time.sleep(car_manager.cars_speed)
     screen.update()
 
-    if player.ycor() > 280:
+    if player.ycor() > player.finish_line:
         player.go_to_start_position()
         scoreboard.level_up()
         car_manager.cars_speed *= 0.8

@@ -12,6 +12,7 @@ class Player(Turtle):
         self.shape("turtle")
         self.goto(STARTING_POSITION)
         self.setheading(90)
+        self.finish_line = FINISH_LINE_Y
 
     def move(self):
         self.forward(MOVE_DISTANCE)
