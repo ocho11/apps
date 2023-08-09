@@ -12,10 +12,10 @@ answer_state = screen.textinput(title="Guess the State", prompt="What's another 
 data = pandas.read_csv("50_states.csv")
 states_name_lower_case = data
 all_states = data.state.to_list()
-number_of_correct_answer = 0
+correct_guessed_answers = []
 number_of_all_states = len(all_states)
 
-while number_of_correct_answer < 50:
+while len(correct_guessed_answers) < 50:
 
     if answer_state == "Exit":
         break
@@ -26,7 +26,7 @@ while number_of_correct_answer < 50:
         state_data = data[data.state == answer_state]
         t.goto(int(state_data.x), int(state_data.y))
         t.write(answer_state)
-        number_of_correct_answer += 1
+        correct_guessed_answers.append(answer_state)
 
-    answer_state = screen.textinput(title=f"{number_of_correct_answer}/{number_of_all_states} States Correct",
+    answer_state = screen.textinput(title=f"{len(correct_guessed_answers)}/{number_of_all_states} States Correct",
                      prompt="What's another state's name?").title()
