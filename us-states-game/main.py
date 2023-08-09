@@ -18,10 +18,7 @@ number_of_all_states = len(all_states)
 while len(correct_guessed_answers) < 50:
 
     if answer_state == "Exit":
-        missing_states = []
-        for s in all_states:
-            if not s in correct_guessed_answers:
-                missing_states.append(s)
+        missing_states = [state for state in all_states if state not in correct_guessed_answers]
         new_data_frame = pandas.DataFrame(missing_states)
         new_data_frame.to_csv("learn_states.csv")
         break
