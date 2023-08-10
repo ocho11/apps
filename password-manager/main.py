@@ -1,9 +1,14 @@
 from tkinter import *
 
 
-def save_web_site_password():
-    print("")
+def save():
+    site_name = input_website.get()
+    password = input_password.get()
 
+    input_website.delete(0, END)
+    input_password.delete(0, END)
+    with open("data.txt", mode="a") as file:
+        file.write(f"{site_name}\n{password}\n\n")
 
 
 window = Tk()
@@ -35,7 +40,7 @@ input_password.grid(row=3, column=1)
 button_generate_password = Button(text="Generate Password")
 button_generate_password.grid(row=3, column=2)
 
-button_add = Button(text="Add", width=36)
+button_add = Button(text="Add", width=36, command=save)
 button_add.grid(row=4, column=1, columnspan=2)
 
 window.mainloop()
