@@ -5,6 +5,22 @@ import pyperclip
 import json
 
 
+def find_password():
+    try:
+        site = input_website.get()
+        with open("data.json") as file:
+            info_from_json = json.load(file)
+            if site in info_from_json:
+                mail = info_from_json[site]["email"]
+                password = info_from_json[site]["password"]
+                messagebox.showinfo(message=f"Website: {site}\nEmail: {mail}\nPassword: {password}")
+            else:
+                messagebox.showinfo(message="No details for the website exists.")
+
+    except FileNotFoundError:
+        messagebox.showinfo(message="No Data File Found")
+
+
 # Generate password
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
@@ -71,9 +87,12 @@ canvas.grid(row=0, column=1)
 
 label_web_site = Label(text="Website:")
 label_web_site.grid(row=1, column=0)
-input_website = Entry(width=35)
+input_website = Entry(width=21)
 input_website.focus()
-input_website.grid(row=1, column=1, columnspan=2)
+input_website.grid(row=1, column=1)
+
+button_search = Button(text="Search", width=13, command=find_password)
+button_search.grid(row=1, column=2)
 
 label_email_username = Label(text="Email/Username:")
 label_email_username.grid(row=2, column=0)
@@ -86,7 +105,7 @@ label_password.grid(row=3, column=0)
 input_password = Entry(width=21)
 input_password.grid(row=3, column=1)
 
-button_generate_password = Button(text="Generate Password", command=generate_password)
+button_generate_password = Button(text="Generate Password", width=13, command=generate_password)
 button_generate_password.grid(row=3, column=2)
 
 button_add = Button(text="Add", width=36, command=save)
