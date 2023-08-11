@@ -6,22 +6,21 @@ import json
 
 
 def find_password():
+    site = input_website.get()
     try:
-        site = input_website.get()
         with open("data.json") as file:
             info_from_json = json.load(file)
-            if site in info_from_json:
-                mail = info_from_json[site]["email"]
-                password = info_from_json[site]["password"]
-                messagebox.showinfo(message=f"Website: {site}\nEmail: {mail}\nPassword: {password}")
-            else:
-                messagebox.showinfo(message="No details for the website exists.")
-
     except FileNotFoundError:
         messagebox.showinfo(message="No Data File Found")
+    else:
+        if site in info_from_json:
+            mail = info_from_json[site]["email"]
+            password = info_from_json[site]["password"]
+            messagebox.showinfo(message=f"Website: {site}\nEmail: {mail}\nPassword: {password}")
+        else:
+            messagebox.showinfo(message=f"No details for the {site} exists.")
 
 
-# Generate password
 def generate_password():
     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -61,7 +60,7 @@ def save():
         messagebox.showinfo(title="Oops", message="Please don't leave any fields empty!")
     else:
         is_ok = messagebox.askokcancel(title=site,
-                                       message=f"These are the details entered: \nEmail: {email}\nPassword: {password}\nIs it ok to save?")
+                                       message=f"These are the details entered: \nWebsite: {site}\nEmail: {email}\nPassword: {password}\nIs it ok to save?")
         if is_ok:
             try:
                 with open("data.json", mode="r") as file:
