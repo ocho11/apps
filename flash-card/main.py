@@ -14,12 +14,14 @@ words_dictionary = dict(zip(data.Word, data.Meaning))
 
 def next_word():
     global word_of_words
+    global timer_of_changes
+    window.after_cancel(timer_of_changes)
 
     word_of_words = random.choice(data.Word)
     canvas.itemconfig(title, text=WORD, fill="Black")
     canvas.itemconfig(current_word, text=word_of_words, fill="Black")
     canvas.itemconfig(card_background, image=front_img_card)
-    window.after(3000, func=display_translation)
+    timer_of_changes = window.after(3000, func=display_translation)
 
 
 def display_translation():
@@ -49,6 +51,7 @@ correct_img = PhotoImage(file="./images/right.png")
 correct_button = Button(image=correct_img, highlightthickness=0, command=next_word)
 correct_button.grid(row=1, column=1)
 
+timer_of_changes = window.after(3000, func=display_translation)
 next_word()
 
 window.mainloop()
