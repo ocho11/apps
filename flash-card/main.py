@@ -8,18 +8,18 @@ WORD = "Word"
 MEANING = "Meaning"
 
 data = pandas.read_csv("./data/ielts_words.csv")
-word_of_words = None
+current_word_from_data = None
 words_dictionary = dict(zip(data.Word, data.Meaning))
 
 
 def next_word():
-    global word_of_words
+    global current_word_from_data
     global timer_of_changes
     window.after_cancel(timer_of_changes)
 
-    word_of_words = random.choice(data.Word)
+    current_word_from_data = random.choice(data.Word)
     canvas.itemconfig(title, text=WORD, fill="Black")
-    canvas.itemconfig(current_word, text=word_of_words, fill="Black")
+    canvas.itemconfig(current_word, text=current_word_from_data, fill="Black")
     canvas.itemconfig(card_background, image=front_img_card)
     timer_of_changes = window.after(3000, func=display_translation)
 
@@ -27,7 +27,7 @@ def next_word():
 def display_translation():
     canvas.itemconfig(card_background, image=back_img_card)
     canvas.itemconfig(title, text=MEANING, fill="White")
-    canvas.itemconfig(current_word, text=words_dictionary[word_of_words], fill="White")
+    canvas.itemconfig(current_word, text=words_dictionary[current_word_from_data], fill="White")
 
 
 window = Tk()
