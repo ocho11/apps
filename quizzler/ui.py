@@ -26,11 +26,11 @@ class QuizInterface:
         self.canvas.grid(row=1, column=0, columnspan=2, pady=30)
 
         yes_img = PhotoImage(file="./images/true.png")
-        self.yes_button = Button(image=yes_img, highlightthickness=0)
+        self.yes_button = Button(image=yes_img, highlightthickness=0, command=self.yes_button_clicked)
         self.yes_button.grid(row=2, column=0)
 
         no_img = PhotoImage(file="./images/false.png")
-        self.no_button = Button(image=no_img, highlightthickness=0)
+        self.no_button = Button(image=no_img, highlightthickness=0, command=self.no_button_clicked)
         self.no_button.grid(row=2, column=1)
 
         self.get_next_question()
@@ -40,3 +40,9 @@ class QuizInterface:
     def get_next_question(self):
         question_text = self.quiz.next_question()
         self.canvas.itemconfig(self.quiz_text, text=question_text)
+
+    def yes_button_clicked(self):
+        self.quiz.check_answer("True")
+
+    def no_button_clicked(self):
+        self.quiz.check_answer("False")
