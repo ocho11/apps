@@ -1,3 +1,4 @@
+import time
 from tkinter import *
 from quiz_brain import QuizBrain
 
@@ -42,7 +43,14 @@ class QuizInterface:
         self.canvas.itemconfig(self.quiz_text, text=question_text)
 
     def yes_button_clicked(self):
-        self.quiz.check_answer("True")
+        self.give_answer_by_colour(self.quiz.check_answer("True"))
 
     def no_button_clicked(self):
-        self.quiz.check_answer("False")
+        self.give_answer_by_colour(self.quiz.check_answer("False"))
+
+    def give_answer_by_colour(self, is_right):
+        if is_right:
+            self.canvas.config(bg="green")
+        else:
+            self.canvas.config(bg="red")
+        self.window.after(1000, self.get_next_question())
