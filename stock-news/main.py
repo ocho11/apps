@@ -1,6 +1,5 @@
 import requests
 import os
-import json
 from twilio.rest import Client
 
 STOCK = "AAPL"
