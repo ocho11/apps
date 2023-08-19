@@ -35,13 +35,20 @@ stock_data_list = [value for (key, value) in stock_data.items()]
 yesterday_closing_price = float(stock_data_list[0]["4. close"])
 day_before_yesterday_closing_price = float(stock_data_list[1]["4. close"])
 
+up_down = None
+if yesterday_closing_price > day_before_yesterday_closing_price:
+    up_down = "🔺"
+else:
+    up_down = "🔻"
+
 if abs(yesterday_closing_price - day_before_yesterday_closing_price) >= TEN_DOLLAR:
     response_news = requests.get(NEWS_ENDPOINT, params=news_parameters)
     response_news.raise_for_status()
     three_articles = response_news.json()["articles"][:3]
 
     client = Client(ACCOUNT_SID, AUTH_TOKEN)
-    three_messages = [f"Headline: {article['title']}.\nBrief: {article['description']}" for article in three_articles]
+    three_messages = [f"{COMPANY_NAME}: {up_down}\nHeadline: {article['title']}.\nBrief: {article['description']}" for
+                      article in three_articles]
     for message in three_messages:
         mess = client.messages.create(
             body=message,
