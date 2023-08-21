@@ -47,3 +47,11 @@ not_created_pixel = False
 if not_created_pixel:
     response_pixel = requests.post(url=PIXEL_ENDPOINT, json=pixel_params, headers=headers)
     print(response_pixel.text)
+
+update_date = today
+pixel_update_body_params = {
+    "quantity": "5.5",
+}
+
+response_update = requests.put(url=f"{PIXEL_ENDPOINT}/{today}", json=pixel_update_body_params, headers=headers)
+print(response_update.text)
