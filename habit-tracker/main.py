@@ -55,3 +55,6 @@ pixel_update_body_params = {
 
 response_update = requests.put(url=f"{PIXEL_ENDPOINT}/{today}", json=pixel_update_body_params, headers=headers)
 print(response_update.text)
+
+response_delete = requests.delete(url=f"{PIXEL_ENDPOINT}/{today}", headers=headers)
+print(response_delete.text)
