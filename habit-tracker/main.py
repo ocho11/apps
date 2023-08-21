@@ -40,7 +40,7 @@ if not_created_graph:
 today = datetime.now().strftime("%Y%m%d")
 pixel_params = {
     "date": today,
-    "quantity": "1.5",
+    "quantity": input("How many kilometers did you run today?"),
 }
 
 not_created_pixel = False
@@ -53,8 +53,12 @@ pixel_update_body_params = {
     "quantity": "5.5",
 }
 
-response_update = requests.put(url=f"{PIXEL_ENDPOINT}/{today}", json=pixel_update_body_params, headers=headers)
-print(response_update.text)
+update_data = False
+if update_data:
+    response_update = requests.put(url=f"{PIXEL_ENDPOINT}/{today}", json=pixel_update_body_params, headers=headers)
+    print(response_update.text)
 
-response_delete = requests.delete(url=f"{PIXEL_ENDPOINT}/{today}", headers=headers)
-print(response_delete.text)
+delete_data = False
+if delete_data:
+    response_delete = requests.delete(url=f"{PIXEL_ENDPOINT}/{today}", headers=headers)
+    print(response_delete.text)
