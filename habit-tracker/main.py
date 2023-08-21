@@ -1,5 +1,6 @@
 import os
 import requests
+from datetime import datetime
 
 PIXELA_ENDPOINT = "https://pixe.la/v1/users"
 TOKEN = os.environ.get("PIXELA_TOKEN")
@@ -36,8 +37,9 @@ if not_created_graph:
     response_graph = requests.post(url=GRAPH_ENDPOINT, json=graph_params, headers=headers)
     print(response_graph.text)
 
+today = datetime.now().strftime("%Y%m%d")
 pixel_params = {
-    "date": "20230820",
+    "date": today,
     "quantity": "1.5",
 }
 
