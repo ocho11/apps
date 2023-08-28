@@ -16,5 +16,18 @@ parameters = {
 }
 
 response = requests.post(url=RECORD_ENDPOINT, json=parameters, headers=headers)
+response.raise_for_status()
+
 response_json = response.json()
 print(response_json)
+
+sheety_params = {
+    "workout":
+        {
+            "date": "21/07/2023",
+            "time": "15:00:00",
+            "exercise": "Running",
+            "duration": 22,
+            "calories": 130,
+        }
+}
